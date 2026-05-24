@@ -1,25 +1,11 @@
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.Color;
 
-public class GreenAppleCard {
-    BufferedImage greenApple;
-    private String name;
-    private String description;
-
+public class GreenAppleCard extends Card {
     public GreenAppleCard(String name) {
-        this.name = name;
-        this.description = description;
-        try {
-            greenApple = ImageIO.read(new File("GreenApple.png"));
-        } catch (IOException var2) {
-            var2.printStackTrace();
-        }
+        super(name, "Green apple card", "GreenApple.png");
+    }
 
-   }
-
-    public BufferedImage getImage() {
-        return greenApple;
+    protected Color getOutlineColor() {
+        return Color.GREEN;
     }
 }

@@ -16,7 +16,7 @@ public class EndScreen extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setLayout(null);
 
-        getContentPane().setBackground(new Color(255, 220, 220));
+        getContentPane().setBackground(new Color(220, 235, 255));
 
         // Winner text
         winnerLabel = new JLabel(winnerName + " Wins!");
