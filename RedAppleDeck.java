@@ -3,9 +3,11 @@ import java.util.Collections;
 
 public class RedAppleDeck {
     private ArrayList<RedAppleCard> deck;
+    private ArrayList<RedAppleCard> discardPile;
 
     public RedAppleDeck() {
         deck = new ArrayList<>();
+        discardPile = new ArrayList<>();
         loadCards();
         shuffleDeck();
     }
@@ -49,10 +51,22 @@ public class RedAppleDeck {
 
     public RedAppleCard drawCard() {
         if (deck.isEmpty()) {
+            deck.addAll(discardPile);
+            discardPile.clear();
+            shuffleDeck();
+        }
+
+        if (deck.isEmpty()) {
             return null;
         }
 
         return deck.remove(0);
+    }
+
+    public void discardCard(RedAppleCard card) {
+        if (card != null) {
+            discardPile.add(card);
+        }
     }
 
     public int cardsRemaining() {

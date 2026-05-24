@@ -5,7 +5,6 @@ import javax.swing.*;
 public class StartScreen extends JFrame implements ActionListener {
 
     private JButton startButton;
-    private JButton testEndScreenButton;
     private JLabel titleLabel;
     private JTextArea instructionsArea;
 
@@ -29,14 +28,15 @@ public class StartScreen extends JFrame implements ActionListener {
         // Instructions
         instructionsArea = new JTextArea(
             "How to Play:\n" +
-            "1. Each player gets red apple cards.\n" +
-            "2. A green apple card is shown as the round topic.\n" +
-            "3. Players choose the red card that best matches the green card.\n" +
-            "4. The judge picks the funniest or best match.\n" +
-            "5. The player whose card is picked wins the green card.\n" +
-            "6. The first player with the most green cards wins."
+            "1. Each player begins with seven red apple cards.\n" +
+            "2. The judge reveals a green apple card for the round.\n" +
+            "3. Everyone except the judge secretly submits one red card.\n" +
+            "4. The judge picks the best anonymous match.\n" +
+            "5. The winning player keeps the green card; all hands refill.\n" +
+            "6. The judge role passes to the next player each round.\n" +
+            "7. The first player to collect eight green cards wins."
         );
-        instructionsArea.setBounds(170, 210, 460, 150);
+        instructionsArea.setBounds(150, 210, 520, 175);
         instructionsArea.setFont(new Font("Arial", Font.PLAIN, 16));
         instructionsArea.setBackground(new Color(220, 255, 220));
         instructionsArea.setForeground(Color.BLACK);
@@ -46,19 +46,11 @@ public class StartScreen extends JFrame implements ActionListener {
 
         // Start Button
         startButton = new JButton("Start Game");
-        startButton.setBounds(300, 390, 200, 60);
+        startButton.setBounds(300, 410, 200, 60);
         startButton.setFont(new Font("Arial", Font.BOLD, 24));
         startButton.setActionCommand("start");
         startButton.addActionListener(this);
         add(startButton);
-
-        // Testing button
-        testEndScreenButton = new JButton("Test End Screen");
-        testEndScreenButton.setBounds(275, 470, 250, 60);
-        testEndScreenButton.setFont(new Font("Arial", Font.BOLD, 22));
-        testEndScreenButton.setActionCommand("testEnd");
-        testEndScreenButton.addActionListener(this);
-        add(testEndScreenButton);
 
         setVisible(true);
     }
@@ -71,10 +63,6 @@ public class StartScreen extends JFrame implements ActionListener {
             openGameScreen();
         }
 
-        if (command.equals("testEnd")) {
-            dispose();
-            new EndScreen("Player 1");
-        }
     }
 
     private void openGameScreen() {
